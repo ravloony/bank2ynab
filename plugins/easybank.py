@@ -26,6 +26,14 @@ class EasyBank(B2YBank):
 
     def _parse_payee_from_memo(self, memo):
         groups = self.regex.groupdict(memo)
+        ref = groups["reference"]
+        typ = groups["type"]
+        ext = groups["extra"]
+
+        if typ.startswith('BG') or (typ.startswith('MC') and ref.startswith('Auszahlung')):
+            return 'Bankomat'
+        elif 
+        #TODO
 
 
 def build_bank(config, is_py2):
